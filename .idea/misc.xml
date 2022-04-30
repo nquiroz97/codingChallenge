@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/edit_text_line.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_animation.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_lock.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/rounded_button.xml" value="0.125" />

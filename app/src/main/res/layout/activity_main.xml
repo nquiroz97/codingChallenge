@@ -28,8 +28,7 @@
             android:drawablePadding="16dp"
             android:paddingStart="22dp"
             android:gravity="start|center_vertical"
-            style="@style/entryButtonTextStyle"
-            tools:ignore="RtlSymmetry" />
+            style="@style/entryButtonTextStyle" />
 
         <Button
             android:drawableStart="@drawable/ic_lock"
@@ -43,8 +42,7 @@
             android:drawablePadding="16dp"
             android:paddingStart="22dp"
             android:gravity="start|center_vertical"
-            style="@style/entryButtonTextStyle"
-            tools:ignore="RtlSymmetry" />
+            style="@style/entryButtonTextStyle"/>
 
         <Button
             android:drawableStart="@drawable/ic_animation"
