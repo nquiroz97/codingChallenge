@@ -5,5 +5,8 @@
     <color name="colorAccent">#000000</color>
     <color name="background">#F9F9F9</color>
     <color name="button_blue">#0E5C89</color>
-    <color name="chat_text">#1B1E1F</color>
+    <color name="chat_text_color">#1B1E1F</color>
+    <color name="hint_text_color">#5F6063</color>
+    <color name="primary_text_color">#FFFFFF</color>
+    <color name="button_color">#90FFFFFF</color>
 </resources>

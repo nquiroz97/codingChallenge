@@ -1,6 +1,6 @@
 package com.datechnologies.androidtest;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
          * =========================================================================================
          */
 
-        // TODO: Make the UI look like it does in the mock-up
-        // TODO: Add a ripple effect when the buttons are clicked
+        //DONE: Make the UI look like it does in the mock-up
+        //DONE: Add a ripple effect when the buttons are clicked
     }
 
     //==============================================================================================
