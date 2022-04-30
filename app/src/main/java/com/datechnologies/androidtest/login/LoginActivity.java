@@ -40,8 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
-        // TODO: Make the UI look like it does in the mock-up. Allow for horizontal screen rotation.
-        // TODO: Add a ripple effect when the buttons are clicked
+        // DONE: Make the UI look like it does in the mock-up. Allow for horizontal screen rotation.
+        // DONE: Add a ripple effect when the buttons are clicked
         // TODO: Save screen state on screen rotation, inputted username and password should not disappear on screen rotation
 
         // TODO: Send 'email' and 'password' to http://dev.rapptrlabs.com/Tests/scripts/login.php
