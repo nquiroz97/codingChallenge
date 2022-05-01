@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
          * 2. Use this starter project as a base and build upon it. It is ok to remove some of the
          *    provided code if necessary.
          *
-         * 3. Read the additional 'TODO' comments throughout the codebase, they will guide you.
+         * 3. Read the additional comments throughout the codebase, they will guide you.
          *
          * 3. Please take care of the bug(s) we left for you in the project as well.
          *

@@ -45,8 +45,8 @@ public class AnimationActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
-        // TODO: Make the UI look like it does in the mock-up. Allow for horizontal screen rotation.
-        // TODO: Add a ripple effect when the buttons are clicked
+        // DONE: Make the UI look like it does in the mock-up. Allow for horizontal screen rotation.
+        // DONE: Add a ripple effect when the buttons are clicked
 
         // TODO: When the fade button is clicked, you must animate the D & A Technologies logo.
         // TODO: It should fade from 100% alpha to 0% alpha, and then from 0% alpha to 100% alpha
@@ -59,6 +59,7 @@ public class AnimationActivity extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
+        super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
