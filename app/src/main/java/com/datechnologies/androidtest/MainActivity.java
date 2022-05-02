@@ -22,24 +22,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        /**
-         * =========================================================================================
-         * INSTRUCTIONS
-         * =========================================================================================
-         *
-         * 1. UI must work on Android phones of multiple sizes. Do not worry about Android Tablets.
-         *
-         * 2. Use this starter project as a base and build upon it. It is ok to remove some of the
-         *    provided code if necessary.
-         *
-         * 3. Read the additional comments throughout the codebase, they will guide you.
-         *
-         * 3. Please take care of the bug(s) we left for you in the project as well.
-         *
-         * Thank you and Good luck. -  D & A Technologies
-         * =========================================================================================
-         */
-
         //DONE: Make the UI look like it does in the mock-up
         //DONE: Add a ripple effect when the buttons are clicked
     }
