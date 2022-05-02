@@ -7,6 +7,15 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <!-- Splash Screen theme -->
+    <style name="SplashTheme" parent ="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowBackground">@drawable/gpc_splash</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBar">true</item>
+    </style>
     
     <!-- custom font styles -->
     <style name="headerTextStyle">
@@ -23,12 +32,12 @@
         <item name="android:textSize">16sp</item>
     </style>
     <style name="chatUsernameTextStyle">
-        <item name="android:fontWeight">500</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/chat_text_color</item>
         <item name="android:textSize">13sp</item>
     </style>
     <style name="chatMessageTextStyle">
-        <item name="android:fontWeight">400</item>
+        <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/chat_text_color</item>
         <item name="android:textSize">15sp</item>
     </style>

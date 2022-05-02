@@ -11,21 +11,20 @@
         android:layout_height="match_parent"
         android:layout_marginTop="214dp"
         android:layout_marginBottom="213dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginHorizontal="@dimen/edit_text_horizontal_margin"
         android:gravity="center"
         android:orientation="vertical">
 
         <Button
             android:drawableStart="@drawable/ic_chat"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="@dimen/button_size"
             android:onClick="onChatClicked"
             android:text="@string/chat_button"
             android:background="@drawable/rounded_button"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:layout_marginBottom="24dp"
-            android:drawablePadding="16dp"
+            android:drawablePadding="@dimen/activity_vertical_margin"
             android:paddingStart="22dp"
             android:gravity="start|center_vertical"
             style="@style/entryButtonTextStyle" />
@@ -33,13 +32,13 @@
         <Button
             android:drawableStart="@drawable/ic_lock"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="@dimen/button_size"
             android:onClick="onLoginClicked"
             android:text="@string/login_button"
             android:background="@drawable/rounded_button"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:layout_marginBottom="24dp"
-            android:drawablePadding="16dp"
+            android:drawablePadding="@dimen/activity_vertical_margin"
             android:paddingStart="22dp"
             android:gravity="start|center_vertical"
             style="@style/entryButtonTextStyle"/>
@@ -47,13 +46,13 @@
         <Button
             android:drawableStart="@drawable/ic_animation"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="@dimen/button_size"
             android:onClick="onAnimationClicked"
             android:text="@string/animation_button"
             android:background="@drawable/rounded_button"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:gravity="start|center_vertical"
-            android:drawablePadding="16dp"
+            android:drawablePadding="@dimen/activity_vertical_margin"
             android:paddingStart="22dp"
             style="@style/entryButtonTextStyle"
             tools:ignore="RtlSymmetry" />

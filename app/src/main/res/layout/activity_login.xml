@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="LoginActivityViewModel"
             type="com.datechnologies.androidtest.login.LoginActivityViewModel" />
     </data>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="16dp"
+        android:paddingTop="@dimen/activity_vertical_margin"
         android:background="@drawable/gpc_sunset"
         tools:context=".login.LoginActivity">
 
@@ -18,8 +18,7 @@
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="24dp"
-            android:paddingBottom="24dp"
+            android:paddingVertical="@dimen/login_activity_vertical_margin"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -28,8 +27,7 @@
                 android:id="@+id/idEdtUserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginHorizontal="@dimen/edit_text_horizontal_margin"
                 android:hint="@string/username"
                 android:backgroundTint="@color/button_blue"
                 android:inputType="textEmailAddress"
@@ -40,10 +38,9 @@
                 android:id="@+id/idEdtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginHorizontal="@dimen/edit_text_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginBottom="@dimen/login_activity_vertical_margin"
                 android:hint="@string/password"
                 android:background="@drawable/edit_text_line"
                 android:inputType="textPassword"
@@ -53,7 +50,7 @@
             <Button
                 android:id="@+id/idBtnLogin"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="@dimen/button_size"
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="26dp"
                 android:background="@color/button_blue"

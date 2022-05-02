@@ -7,11 +7,16 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -29,7 +34,6 @@ public class AnimationActivity extends AppCompatActivity {
     // Class Properties
     //==============================================================================================
     private ImageView imageView;
-    private Button button;
     private float startingX,  startingY;
     private Animation fadeOutIn;
 
@@ -66,8 +70,10 @@ public class AnimationActivity extends AppCompatActivity {
 
         fadeOutIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_in);
 
-        button = findViewById(R.id.idBtnAnimation);
-        button.setOnClickListener(view -> imageView.startAnimation(fadeOutIn));
+        Button soundButton = findViewById(R.id.idBtnSound);
+        Button animationButton = findViewById(R.id.idBtnAnimation);
+        soundButton.setOnClickListener(view -> onAnimationStart());
+        animationButton.setOnClickListener(view -> imageView.startAnimation(fadeOutIn));
 
         // DONE: Make the UI look like it does in the mock-up. Allow for horizontal screen rotation.
         // DONE: Add a ripple effect when the buttons are clicked
@@ -77,7 +83,7 @@ public class AnimationActivity extends AppCompatActivity {
 
         // DONE: The user should be able to touch and drag the D & A Technologies logo around the screen.
 
-        // TODO: Add a bonus to make yourself stick out. Music, color, fireworks, explosions!!!
+        // DONE: Add a bonus to make yourself stick out. Music, color, fireworks, explosions!!!
     }
 
     @Override
@@ -86,6 +92,18 @@ public class AnimationActivity extends AppCompatActivity {
         super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    private void onAnimationStart(){
+        RotateAnimation rotateAnimation = new RotateAnimation(0f, 350f, 15f, 15f);
+        rotateAnimation.setInterpolator(new LinearInterpolator());
+        rotateAnimation.setRepeatCount(Animation.INFINITE);
+        rotateAnimation.setDuration(700);
+
+        imageView.startAnimation(rotateAnimation);
+
+        final Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(() -> imageView.setAnimation(null), 2200);
     }
 
     private boolean handleOnTouch(View view, @NonNull MotionEvent motionEvent){

@@ -2,7 +2,15 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="normal_margin">8dp</dimen>
+    <dimen name="large_margin">100dp</dimen>
+    <dimen name="chat_item_image_margin">60dp</dimen>
+    <dimen name="edit_text_horizontal_margin">30dp</dimen>
+    <dimen name="login_activity_vertical_margin">24dp</dimen>
 
     <!-- Text Sizes -->
     <dimen name="button_text_size">14sp</dimen>
+
+    <!-- UI sizes -->
+    <dimen name="button_size">55dp</dimen>
 </resources>
