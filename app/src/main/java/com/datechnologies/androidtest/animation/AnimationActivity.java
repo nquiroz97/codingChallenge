@@ -1,25 +1,19 @@
 package com.datechnologies.androidtest.animation;
 
 import android.annotation.SuppressLint;
-import android.content.ClipData;
-import android.content.ClipDescription;
 import android.content.Context;
 import android.content.Intent;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.datechnologies.androidtest.MainActivity;
 import com.datechnologies.androidtest.R;
@@ -35,8 +29,9 @@ public class AnimationActivity extends AppCompatActivity {
     // Class Properties
     //==============================================================================================
     private ImageView imageView;
-    private android.widget.RelativeLayout.LayoutParams layoutParams;
+    private Button button;
     private float startingX,  startingY;
+    private Animation fadeOutIn;
 
 
     //==============================================================================================
@@ -67,41 +62,18 @@ public class AnimationActivity extends AppCompatActivity {
 
         imageView = findViewById(R.id.draggableImage);
 
-        imageView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch (motionEvent.getActionMasked()) {
-                    case MotionEvent.ACTION_DOWN: {
-                        // Remember where we started (for dragging)
-                        startingX = motionEvent.getX();
-                        startingY = motionEvent.getY();
-                        break;
-                    }
+        imageView.setOnTouchListener(this::handleOnTouch);
 
-                    case MotionEvent.ACTION_MOVE: {
-                        final float movedX = motionEvent.getX();
-                        final float movedY = motionEvent.getY();
+        fadeOutIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_in);
 
-                        // Calculate the distance moved
-                        final float distanceX = movedX - startingX;
-                        final float distanceY = movedY - startingY;
-
-                        imageView.setX(imageView.getX() + distanceX);
-                        imageView.setY(imageView.getY() + distanceY);
-
-                        view.invalidate();
-                        break;
-                    }
-                }
-                return true;
-            }
-        });
+        button = findViewById(R.id.idBtnAnimation);
+        button.setOnClickListener(view -> imageView.startAnimation(fadeOutIn));
 
         // DONE: Make the UI look like it does in the mock-up. Allow for horizontal screen rotation.
         // DONE: Add a ripple effect when the buttons are clicked
 
-        // TODO: When the fade button is clicked, you must animate the D & A Technologies logo.
-        // TODO: It should fade from 100% alpha to 0% alpha, and then from 0% alpha to 100% alpha
+        // DONE: When the fade button is clicked, you must animate the D & A Technologies logo.
+        // DONE: It should fade from 100% alpha to 0% alpha, and then from 0% alpha to 100% alpha
 
         // DONE: The user should be able to touch and drag the D & A Technologies logo around the screen.
 
@@ -114,5 +86,32 @@ public class AnimationActivity extends AppCompatActivity {
         super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    private boolean handleOnTouch(View view, @NonNull MotionEvent motionEvent){
+        switch (motionEvent.getActionMasked()) {
+            case MotionEvent.ACTION_DOWN: {
+                // Remember where we started (for dragging)
+                startingX = motionEvent.getX();
+                startingY = motionEvent.getY();
+                break;
+            }
+
+            case MotionEvent.ACTION_MOVE: {
+                final float movedX = motionEvent.getX();
+                final float movedY = motionEvent.getY();
+
+                // Calculate the distance moved
+                final float distanceX = movedX - startingX;
+                final float distanceY = movedY - startingY;
+
+                imageView.setX(imageView.getX() + distanceX);
+                imageView.setY(imageView.getY() + distanceY);
+
+                view.invalidate();
+                break;
+            }
+        }
+        return true;
     }
 }
