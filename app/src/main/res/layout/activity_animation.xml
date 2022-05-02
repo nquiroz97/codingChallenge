@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:src="@drawable/gpc_logo" />
     <Button
-        android:id="@+id/idBtnLogin"
+        android:id="@+id/idBtnAnimation"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginStart="30dp"

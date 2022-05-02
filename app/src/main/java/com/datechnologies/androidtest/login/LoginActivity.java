@@ -4,10 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.os.Bundle;
 
 import com.datechnologies.androidtest.MainActivity;
 import com.datechnologies.androidtest.R;
+import com.datechnologies.androidtest.databinding.ActivityLoginBinding;
 
 /**
  * A screen that displays a login prompt, allowing the user to login to the D & A Technologies Web Server.
@@ -18,6 +22,9 @@ public class LoginActivity extends AppCompatActivity {
     //==============================================================================================
     // Static Class Methods
     //==============================================================================================
+    private LoginActivityViewModel loginViewModel;
+    private ActivityLoginBinding activityLoginBinding;
+
 
     public static void start(Context context)
     {
@@ -32,6 +39,11 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loginViewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
+        activityLoginBinding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
+        activityLoginBinding.setLifecycleOwner(this);
+        activityLoginBinding.setLoginActivityViewModel(loginViewModel);
+
         setContentView(R.layout.activity_login);
 
         ActionBar actionBar = getSupportActionBar();
@@ -42,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // DONE: Make the UI look like it does in the mock-up. Allow for horizontal screen rotation.
         // DONE: Add a ripple effect when the buttons are clicked
-        // TODO: Save screen state on screen rotation, inputted username and password should not disappear on screen rotation
+        // DONE: Save screen state on screen rotation, inputted username and password should not disappear on screen rotation
 
         // TODO: Send 'email' and 'password' to http://dev.rapptrlabs.com/Tests/scripts/login.php
         // TODO: as FormUrlEncoded parameters.
