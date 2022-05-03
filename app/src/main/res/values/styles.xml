@@ -17,39 +17,39 @@
         <item name="android:windowActionBar">true</item>
     </style>
     
-    <!-- custom font styles -->
+    <!-- font styles -->
     <style name="headerTextStyle">
         <item name="android:textColor">@color/primary_text_color</item>
     </style>
     <style name="buttonTextStyle">
-        <item name="android:fontWeight">500</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textColor">@color/primary_text_color</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/larger_text_size</item>
     </style>
     <style name="entryButtonTextStyle">
-        <item name="android:fontWeight">500</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textColor">@color/chat_text_color</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/larger_text_size</item>
     </style>
     <style name="chatUsernameTextStyle">
-        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textColor">@color/chat_text_color</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">@dimen/smaller_text_size</item>
     </style>
     <style name="chatMessageTextStyle">
-        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/chat_text_color</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">@dimen/medium_text_size</item>
     </style>
     <style name="hintTextFieldStyle">
-        <item name="android:fontWeight">400</item>
+        <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/hint_text_color</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/larger_text_size</item>
     </style>
     <style name="inputFieldTextStyle">
-        <item name="android:fontWeight">400</item>
+        <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/chat_text_color</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/larger_text_size</item>
     </style>
 
 </resources>

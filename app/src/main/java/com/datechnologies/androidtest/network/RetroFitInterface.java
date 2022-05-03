@@ -13,10 +13,10 @@ import retrofit2.http.POST;
 public interface RetroFitInterface {
 
     @FormUrlEncoded
-    @POST("/Tests/scripts/login.php")
+    @POST("/login.php")
     Call<LoginResponse> login(@Field("email") String email, @Field("password") String password);
 
 
-    @GET("/Tests/scripts/chat_log.php")
+    @GET("/chat_log.php")
     Call <ChatResponse> getMessages();
 }

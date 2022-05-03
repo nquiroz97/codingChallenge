@@ -59,7 +59,6 @@ public class AnimationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_animation);
 
         ActionBar actionBar = getSupportActionBar();
-
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
@@ -70,9 +69,9 @@ public class AnimationActivity extends AppCompatActivity {
 
         fadeOutIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_in);
 
-        Button soundButton = findViewById(R.id.idBtnSound);
-        Button animationButton = findViewById(R.id.idBtnAnimation);
-        soundButton.setOnClickListener(view -> onAnimationStart());
+        Button soundButton = findViewById(R.id.idBtnSound), animationButton = findViewById(R.id.idBtnAnimation);
+
+        soundButton.setOnClickListener(view -> onRotateAnimationStart());
         animationButton.setOnClickListener(view -> imageView.startAnimation(fadeOutIn));
 
         // DONE: Make the UI look like it does in the mock-up. Allow for horizontal screen rotation.
@@ -94,7 +93,7 @@ public class AnimationActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void onAnimationStart(){
+    private void onRotateAnimationStart(){
         RotateAnimation rotateAnimation = new RotateAnimation(0f, 350f, 15f, 15f);
         rotateAnimation.setInterpolator(new LinearInterpolator());
         rotateAnimation.setRepeatCount(Animation.INFINITE);
@@ -102,6 +101,7 @@ public class AnimationActivity extends AppCompatActivity {
 
         imageView.startAnimation(rotateAnimation);
 
+        // stops repeated animation for specified amount of time
         final Handler handler = new Handler(Looper.getMainLooper());
         handler.postDelayed(() -> imageView.setAnimation(null), 2200);
     }

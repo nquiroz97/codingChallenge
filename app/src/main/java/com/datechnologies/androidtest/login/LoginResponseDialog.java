@@ -18,7 +18,7 @@ public class LoginResponseDialog extends DialogFragment {
     public static LoginResponseDialog newInstance(String displayText, boolean isSuccess) {
         LoginResponseDialog dialogFragment = new LoginResponseDialog();
 
-        // Supply message as an argument.
+        // Supply message and success flag an argument
         Bundle args = new Bundle();
         args.putString("message", displayText);
         args.putBoolean("success", isSuccess);
@@ -26,6 +26,7 @@ public class LoginResponseDialog extends DialogFragment {
 
         return dialogFragment;
     }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

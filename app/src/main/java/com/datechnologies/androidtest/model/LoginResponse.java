@@ -10,10 +10,6 @@ public class LoginResponse {
 
     long requestCallTime;
 
-    public long getRequestCallTime() {
-        return requestCallTime;
-    }
-
     public LoginResponse(String code, String message, long requestCallTime) {
         this.code = code;
         this.message = message;
@@ -27,6 +23,10 @@ public class LoginResponse {
 
     public String getMessage() {
         return message;
+    }
+
+    public long getRequestCallTime() {
+        return requestCallTime;
     }
 
 }

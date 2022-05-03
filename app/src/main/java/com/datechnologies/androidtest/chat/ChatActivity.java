@@ -49,17 +49,17 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        ActivityChatBinding activityChatBinding = DataBindingUtil.setContentView(ChatActivity.this, R.layout.activity_chat);
-
-        activityChatBinding.setLifecycleOwner(this);
-        activityChatBinding.setChatActivityViewModel(chatActivityViewModel);
-        RecyclerView recyclerView = activityChatBinding.idRecyclerView;
 
         ActionBar actionBar = getSupportActionBar();
-
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
+
+        ActivityChatBinding activityChatBinding = DataBindingUtil.setContentView(ChatActivity.this, R.layout.activity_chat);
+        activityChatBinding.setLifecycleOwner(this);
+        activityChatBinding.setChatActivityViewModel(chatActivityViewModel);
+
+        RecyclerView recyclerView = activityChatBinding.idRecyclerView;
 
         chatAdapter = new ChatAdapter();
 
@@ -71,8 +71,6 @@ public class ChatActivity extends AppCompatActivity {
 
         chatActivityViewModel = new ViewModelProvider(this).get(ChatActivityViewModel.class);
         chatActivityViewModel.getChatMutableLiveData().observe(this, chatListUpdateObserver);
-
-        //chatAdapter.setChatLogMessageModelList(chatActivityViewModel.tempList);
 
         // DONE: Make the UI look like it does in the mock-up. Allow for horizontal screen rotation.
 

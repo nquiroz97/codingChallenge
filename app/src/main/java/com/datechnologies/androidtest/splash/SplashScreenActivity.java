@@ -1,4 +1,4 @@
-package com.datechnologies.androidtest;
+package com.datechnologies.androidtest.splash;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.datechnologies.androidtest.MainActivity;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashScreenActivity extends AppCompatActivity {

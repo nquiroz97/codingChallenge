@@ -31,6 +31,7 @@ public class MainRepository {
             @Override
             public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {
                 long elapsedTime = response.raw().receivedResponseAtMillis() - response.raw().sentRequestAtMillis();
+
                 if(response.isSuccessful()){
                     assert response.body() != null;
                     loginResponse.onResponse(new LoginResponse(response.body().getCode(), response.body().getMessage(), elapsedTime));

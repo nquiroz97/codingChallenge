@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.datechnologies.androidtest.MainActivity;
 import com.datechnologies.androidtest.R;
+import com.datechnologies.androidtest.databinding.ActivityLoginBinding;
 
 /**
  * A screen that displays a login prompt, allowing the user to login to the D & A Technologies Web Server.
@@ -41,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loginViewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
-        com.datechnologies.androidtest.databinding.ActivityLoginBinding activityLoginBinding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
+        ActivityLoginBinding activityLoginBinding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
         activityLoginBinding.setLifecycleOwner(this);
         activityLoginBinding.setLoginActivityViewModel(loginViewModel);
 
@@ -99,6 +100,6 @@ public class LoginActivity extends AppCompatActivity {
     private void showLoginResponseDialog(String displayText, boolean successfulLogin) {
         FragmentManager fm = getSupportFragmentManager();
         LoginResponseDialog loginResponseDialog = LoginResponseDialog.newInstance(displayText, successfulLogin);
-        loginResponseDialog.show(fm, "fragment_login_name");
+        loginResponseDialog.show(fm, "fragment_login");
     }
 }

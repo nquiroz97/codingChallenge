@@ -16,17 +16,16 @@ public class ChatActivityViewModel extends ViewModel {
 
     MutableLiveData<ArrayList<ChatLogMessageModel>> chatLiveData;
     ArrayList<ChatLogMessageModel> chatArrayList = new ArrayList<>();
-
     MainRepository mainRepository = new MainRepository();
 
     public ChatActivityViewModel() {
         chatLiveData = new MutableLiveData<>();
 
-        // call your Rest API in init method
+        // retrofit call when viewModel is initialized
         getChats();
     }
 
-    public void getChats(){
+    private void getChats(){
         mainRepository.fetchChatMessages(new MainRepository.OnChatResponse() {
             @Override
             public void onResponse(ChatResponse chatResponse) {

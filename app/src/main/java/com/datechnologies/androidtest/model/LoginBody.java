@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class LoginBody {
     @SerializedName("email")
-    private String email;
+    private final String email;
     @SerializedName("password")
-    private String password;
+    private final String password;
 
     public LoginBody(String email, String password) {
         this.email = email;
