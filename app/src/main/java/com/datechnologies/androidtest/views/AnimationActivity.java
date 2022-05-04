@@ -3,11 +3,7 @@ package com.datechnologies.androidtest.views;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -28,7 +24,7 @@ import com.datechnologies.androidtest.R;
  * The icon can be moved around on the screen as well as animated.
  * */
 
-public class AnimationActivity extends AppCompatActivity {
+public class AnimationActivity extends CommonActivity {
 
     //==============================================================================================
     // Class Properties
@@ -79,10 +75,7 @@ public class AnimationActivity extends AppCompatActivity {
     }
 
     private void setupUI(){
-        ActionBar actionBar = getSupportActionBar();
-        assert actionBar != null;
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
+        setupActionBar();
 
         imageView = findViewById(R.id.draggableImage);
 

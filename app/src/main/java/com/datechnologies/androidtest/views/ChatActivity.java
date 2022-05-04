@@ -24,7 +24,7 @@ import java.util.ArrayList;
 /**
  * Screen that displays a list of chats from a chat log.
  */
-public class ChatActivity extends AppCompatActivity {
+public class ChatActivity extends CommonActivity {
 
     //==============================================================================================
     // Class Properties
@@ -61,13 +61,12 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void setupUI() {
-        ActionBar actionBar = getSupportActionBar();
-        assert actionBar != null;
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
+        setupActionBar();
+
 
         ActivityChatBinding activityChatBinding = DataBindingUtil.setContentView(ChatActivity.this, R.layout.activity_chat);
         activityChatBinding.setLifecycleOwner(this);
+        chatActivityViewModel = new ViewModelProvider(this).get(ChatActivityViewModel.class);
         activityChatBinding.setChatActivityViewModel(chatActivityViewModel);
 
         RecyclerView recyclerView = activityChatBinding.idRecyclerView;
@@ -80,7 +79,6 @@ public class ChatActivity extends AppCompatActivity {
                 LinearLayoutManager.VERTICAL,
                 false));
 
-        chatActivityViewModel = new ViewModelProvider(this).get(ChatActivityViewModel.class);
         chatActivityViewModel.getChatMutableLiveData().observe(this, chatListUpdateObserver);
     }
 

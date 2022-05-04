@@ -23,7 +23,7 @@ import com.datechnologies.androidtest.viewmodels.LoginActivityViewModel;
  *
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends CommonActivity{
 
     //==============================================================================================
     // Static Class Methods
@@ -70,11 +70,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void setupUI(){
-        ActionBar actionBar = getSupportActionBar();
-
-        assert actionBar != null;
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
+        //called from Common Activity
+        setupActionBar();
 
         ActivityLoginBinding activityLoginBinding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
         activityLoginBinding.setLifecycleOwner(this);
