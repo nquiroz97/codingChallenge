@@ -1,4 +1,4 @@
-package com.datechnologies.androidtest.animation;
+package com.datechnologies.androidtest.views;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -58,22 +58,7 @@ public class AnimationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation);
 
-        ActionBar actionBar = getSupportActionBar();
-        assert actionBar != null;
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
-
-        imageView = findViewById(R.id.draggableImage);
-
-        imageView.setOnTouchListener(this::handleOnTouch);
-
-        fadeOutIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_in);
-
-        Button soundButton = findViewById(R.id.idBtnSound), animationButton = findViewById(R.id.idBtnAnimation);
-
-        soundButton.setOnClickListener(view -> onRotateAnimationStart());
-        animationButton.setOnClickListener(view -> imageView.startAnimation(fadeOutIn));
-
+        setupUI();
         // DONE: Make the UI look like it does in the mock-up. Allow for horizontal screen rotation.
         // DONE: Add a ripple effect when the buttons are clicked
 
@@ -91,6 +76,24 @@ public class AnimationActivity extends AppCompatActivity {
         super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    private void setupUI(){
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+
+        imageView = findViewById(R.id.draggableImage);
+
+        imageView.setOnTouchListener(this::handleOnTouch);
+
+        fadeOutIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_in);
+
+        Button soundButton = findViewById(R.id.idBtnSound), animationButton = findViewById(R.id.idBtnAnimation);
+
+        soundButton.setOnClickListener(view -> onRotateAnimationStart());
+        animationButton.setOnClickListener(view -> imageView.startAnimation(fadeOutIn));
     }
 
     private void onRotateAnimationStart(){

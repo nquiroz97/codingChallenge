@@ -1,4 +1,4 @@
-package com.datechnologies.androidtest.splash;
+package com.datechnologies.androidtest.views;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

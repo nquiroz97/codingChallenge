@@ -1,4 +1,4 @@
-package com.datechnologies.androidtest.login;
+package com.datechnologies.androidtest.views;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

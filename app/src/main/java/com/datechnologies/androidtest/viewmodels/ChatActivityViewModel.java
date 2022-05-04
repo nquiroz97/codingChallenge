@@ -1,4 +1,4 @@
-package com.datechnologies.androidtest.chat;
+package com.datechnologies.androidtest.viewmodels;
 
 import android.util.Log;
 

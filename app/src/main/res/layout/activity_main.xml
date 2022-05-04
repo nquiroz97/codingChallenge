@@ -18,7 +18,7 @@
         <Button
             android:drawableStart="@drawable/ic_chat"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_size"
+            android:layout_height="@dimen/button_height"
             android:onClick="onChatClicked"
             android:text="@string/chat_button"
             android:background="@drawable/rounded_button"
@@ -32,7 +32,7 @@
         <Button
             android:drawableStart="@drawable/ic_lock"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_size"
+            android:layout_height="@dimen/button_height"
             android:onClick="onLoginClicked"
             android:text="@string/login_button"
             android:background="@drawable/rounded_button"
@@ -46,7 +46,7 @@
         <Button
             android:drawableStart="@drawable/ic_animation"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_size"
+            android:layout_height="@dimen/button_height"
             android:onClick="onAnimationClicked"
             android:text="@string/animation_button"
             android:background="@drawable/rounded_button"

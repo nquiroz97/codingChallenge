@@ -5,7 +5,7 @@
     <data>
         <variable
             name="ChatActivityViewModel"
-            type="com.datechnologies.androidtest.chat.ChatActivityViewModel" />
+            type="com.datechnologies.androidtest.viewmodels.ChatActivityViewModel" />
     </data>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         android:layout_marginStart="@dimen/activity_vertical_margin"
         android:layout_marginEnd="21dp"
         android:background="@color/background"
-        tools:context=".chat.ChatActivity">
+        tools:context=".views.ChatActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/idRecyclerView"

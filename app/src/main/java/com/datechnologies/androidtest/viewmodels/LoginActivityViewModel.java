@@ -1,4 +1,4 @@
-package com.datechnologies.androidtest.login;
+package com.datechnologies.androidtest.viewmodels;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

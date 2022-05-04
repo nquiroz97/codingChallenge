@@ -1,4 +1,4 @@
-package com.datechnologies.androidtest.login;
+package com.datechnologies.androidtest.views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,11 +15,14 @@ import androidx.lifecycle.ViewModelProvider;
 import com.datechnologies.androidtest.MainActivity;
 import com.datechnologies.androidtest.R;
 import com.datechnologies.androidtest.databinding.ActivityLoginBinding;
+import com.datechnologies.androidtest.enums.LoginError;
+import com.datechnologies.androidtest.viewmodels.LoginActivityViewModel;
 
 /**
  * A screen that displays a login prompt, allowing the user to login to the D & A Technologies Web Server.
  *
  */
+
 public class LoginActivity extends AppCompatActivity {
 
     //==============================================================================================
@@ -41,26 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loginViewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
-        ActivityLoginBinding activityLoginBinding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
-        activityLoginBinding.setLifecycleOwner(this);
-        activityLoginBinding.setLoginActivityViewModel(loginViewModel);
-
-        Button loginButton = activityLoginBinding.idBtnLogin;
-
-        ActionBar actionBar = getSupportActionBar();
-
-        assert actionBar != null;
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
-
-        loginViewModel.getLoginResult().observe(this, s -> showLoginResponseDialog(s, loginViewModel.isSuccess));
-
-        loginButton.setOnClickListener(view -> {
-            if(validateLogin(loginViewModel.emailAddress, loginViewModel.password)){
-                loginViewModel.login(loginViewModel.emailAddress, loginViewModel.password);
-            }
-        });
+        setupUI();
 
         // DONE: Make the UI look like it does in the mock-up. Allow for horizontal screen rotation.
         // DONE: Add a ripple effect when the buttons are clicked
@@ -85,16 +69,66 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void setupUI(){
+        ActionBar actionBar = getSupportActionBar();
+
+        assert actionBar != null;
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+
+        ActivityLoginBinding activityLoginBinding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
+        activityLoginBinding.setLifecycleOwner(this);
+        activityLoginBinding.setLoginActivityViewModel(loginViewModel);
+
+        Button loginButton = activityLoginBinding.idBtnLogin;
+
+        loginViewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
+        loginViewModel.getLoginResult().observe(this, s -> showLoginResponseDialog(s, loginViewModel.isSuccess));
+
+        loginButton.setOnClickListener(view -> {
+            if(validateLogin(loginViewModel.emailAddress, loginViewModel.password)){
+                loginViewModel.login(loginViewModel.emailAddress, loginViewModel.password);
+            }
+        });
+    }
+
     private boolean validateLogin(String username, String password){
-        if(username == null || username.trim().length() == 0){
-            Toast.makeText(this, "Username is required", Toast.LENGTH_SHORT).show();
+        boolean usernameIsNull =  username == null;
+        boolean passwordIsNull = password == null;
+        boolean usernameIsEmpty = username.trim().length() == 0;
+        boolean passwordIsEmpty = username.trim().length() == 0;
+
+        if((usernameIsNull || usernameIsEmpty) && (passwordIsNull || passwordIsEmpty)){
+            showErrorToast(LoginError.BOTH);
+            return false;
+        }
+        if(usernameIsNull || usernameIsEmpty){
+            showErrorToast(LoginError.EMAIL);
             return false;
         }
         if(password == null || password.trim().length() == 0){
-            Toast.makeText(this, "Password is required", Toast.LENGTH_SHORT).show();
+            showErrorToast(LoginError.PASSWORD);
             return false;
         }
         return true;
+    }
+
+    private void showErrorToast(LoginError loginError){
+        String message;
+        switch (loginError){
+            case EMAIL:
+                message = "Email is required";
+                break;
+            case PASSWORD:
+                message = "Password is required";
+                break;
+            case BOTH:
+                message = "Both email and password are required";
+                break;
+            default:
+                message = "Something is wrong";
+        }
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     private void showLoginResponseDialog(String displayText, boolean successfulLogin) {

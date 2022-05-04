@@ -1,4 +1,4 @@
-package com.datechnologies.androidtest.chat;
+package com.datechnologies.androidtest.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.datechnologies.androidtest.R;
 import com.datechnologies.androidtest.model.ChatLogMessageModel;
+import com.datechnologies.androidtest.views.ChatActivity;
 
 import java.util.ArrayList;
 import java.util.List;

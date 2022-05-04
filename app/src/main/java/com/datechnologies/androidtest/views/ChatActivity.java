@@ -1,4 +1,4 @@
-package com.datechnologies.androidtest.chat;
+package com.datechnologies.androidtest.views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.datechnologies.androidtest.MainActivity;
 import com.datechnologies.androidtest.R;
+import com.datechnologies.androidtest.viewmodels.ChatActivityViewModel;
+import com.datechnologies.androidtest.adapter.ChatAdapter;
 import com.datechnologies.androidtest.databinding.ActivityChatBinding;
 import com.datechnologies.androidtest.model.ChatLogMessageModel;
 
@@ -50,6 +52,15 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+        setupUI();
+
+        // DONE: Make the UI look like it does in the mock-up. Allow for horizontal screen rotation.
+
+        // DONE: Retrieve the chat data from http://dev.rapptrlabs.com/Tests/scripts/chat_log.php
+        // DONE: Parse this chat data from JSON into ChatLogMessageModel and display it.
+    }
+
+    private void setupUI() {
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -71,11 +82,6 @@ public class ChatActivity extends AppCompatActivity {
 
         chatActivityViewModel = new ViewModelProvider(this).get(ChatActivityViewModel.class);
         chatActivityViewModel.getChatMutableLiveData().observe(this, chatListUpdateObserver);
-
-        // DONE: Make the UI look like it does in the mock-up. Allow for horizontal screen rotation.
-
-        // DONE: Retrieve the chat data from http://dev.rapptrlabs.com/Tests/scripts/chat_log.php
-        // DONE: Parse this chat data from JSON into ChatLogMessageModel and display it.
     }
 
     Observer<ArrayList<ChatLogMessageModel>> chatListUpdateObserver = new Observer<ArrayList<ChatLogMessageModel>>() {

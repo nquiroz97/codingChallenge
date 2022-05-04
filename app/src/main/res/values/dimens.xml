@@ -15,5 +15,6 @@
     <dimen name="larger_text_size">16sp</dimen>
 
     <!-- UI sizes -->
-    <dimen name="button_size">55dp</dimen>
+    <dimen name="button_height">55dp</dimen>
+    <dimen name="edit_text_height">48dp</dimen>
 </resources>

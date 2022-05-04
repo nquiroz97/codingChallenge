@@ -4,7 +4,9 @@
     package="com.datechnologies.androidtest">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
 
     <application
         android:allowBackup="true"
@@ -15,7 +17,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name=".splash.SplashScreenActivity"
+            android:name=".views.SplashScreenActivity"
             android:theme="@style/SplashTheme"
             android:exported="true">
             <intent-filter>
@@ -27,17 +29,17 @@
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
         </activity>
-        <activity android:name=".chat.ChatActivity">
+        <activity android:name=".views.ChatActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".animation.AnimationActivity">
+        <activity android:name=".views.AnimationActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".login.LoginActivity">
+        <activity android:name=".views.LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />

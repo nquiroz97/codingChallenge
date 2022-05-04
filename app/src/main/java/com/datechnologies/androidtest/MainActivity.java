@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.datechnologies.androidtest.animation.AnimationActivity;
-import com.datechnologies.androidtest.chat.ChatActivity;
-import com.datechnologies.androidtest.login.LoginActivity;
+import com.datechnologies.androidtest.views.AnimationActivity;
+import com.datechnologies.androidtest.views.ChatActivity;
+import com.datechnologies.androidtest.views.LoginActivity;
 
 /**
  * The main screen that lets you navigate to all other screens in the app.
