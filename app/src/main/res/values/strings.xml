@@ -11,5 +11,11 @@
     <string name="login">Login</string>
     <string name="fade_in">FADE IN</string>
     <string name="rotate">ROTATE</string>
+    <string name="no_internet">No internet connection</string>
+    <string name="no_chats">No chats to display</string>
+    <string name="empty_email">Email is required</string>
+    <string name="empty_password">Password is required</string>
+    <string name="empty_password_email">Email and password are required</string>
+    <string name="oops">Something went wrong</string>
 
 </resources>

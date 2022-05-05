@@ -18,6 +18,7 @@ import com.datechnologies.androidtest.MainActivity;
 import com.datechnologies.androidtest.R;
 import com.datechnologies.androidtest.databinding.ActivityLoginBinding;
 import com.datechnologies.androidtest.enums.LoginError;
+import com.datechnologies.androidtest.util.NetworkConnectionManager;
 import com.datechnologies.androidtest.viewmodels.LoginActivityViewModel;
 
 /**
@@ -26,14 +27,13 @@ import com.datechnologies.androidtest.viewmodels.LoginActivityViewModel;
  */
 
 public class LoginActivity extends CommonActivity{
+    LoginActivityViewModel loginViewModel;
+    NetworkConnectionManager networkConnectionManager;
+    private ProgressBar loadingIndicator;
 
     //==============================================================================================
     // Static Class Methods
     //==============================================================================================
-    LoginActivityViewModel loginViewModel;
-    private ProgressBar loadingIndicator;
-
-
     public static void start(Context context)
     {
         Intent starter = new Intent(context, LoginActivity.class);
@@ -44,8 +44,22 @@ public class LoginActivity extends CommonActivity{
     // Lifecycle Methods
     //==============================================================================================
     @Override
+    protected void onStart() {
+        super.onStart();
+        networkConnectionManager.registerConnectionObserver(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        networkConnectionManager.unregisterConnectionObserver(this);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        networkConnectionManager = new NetworkConnectionManager(this);
         setupUI();
 
         // DONE: Make the UI look like it does in the mock-up. Allow for horizontal screen rotation.
@@ -72,7 +86,6 @@ public class LoginActivity extends CommonActivity{
     }
 
     private void setupUI(){
-        //called from Common Activity
         setupActionBar();
 
         loginViewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
@@ -93,9 +106,13 @@ public class LoginActivity extends CommonActivity{
     }
 
     private void startLoginProcess(String email, String password){
-        loadingIndicator.setVisibility(View.VISIBLE);
         disableUserInteraction();
-        loginViewModel.login(email, password);
+        if(networkConnectionManager.isNetworkAvailable){
+            loadingIndicator.setVisibility(View.VISIBLE);
+            loginViewModel.login(email, password);
+        }else{
+            showErrorToast(LoginError.NO_INTERNET);
+        }
     }
 
     private boolean validateLogin(String email, String password){
@@ -122,16 +139,19 @@ public class LoginActivity extends CommonActivity{
         String message;
         switch (loginError){
             case EMAIL:
-                message = "Email is required";
+                message = getString(R.string.empty_email);
                 break;
             case PASSWORD:
-                message = "Password is required";
+                message = getString(R.string.empty_password);
                 break;
             case BOTH:
-                message = "Both email and password are required";
+                message = getString(R.string.empty_password_email);
+                break;
+            case NO_INTERNET:
+                message = getString(R.string.no_internet);
                 break;
             default:
-                message = "Something is wrong";
+                message = getString(R.string.oops);
         }
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }

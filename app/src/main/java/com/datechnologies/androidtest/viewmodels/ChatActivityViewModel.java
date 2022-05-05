@@ -14,9 +14,9 @@ import java.util.List;
 
 public class ChatActivityViewModel extends ViewModel {
 
-    MutableLiveData<ArrayList<ChatLogMessageModel>> chatLiveData;
-    ArrayList<ChatLogMessageModel> chatArrayList = new ArrayList<>();
-    MainRepository mainRepository = new MainRepository();
+    public MutableLiveData<ArrayList<ChatLogMessageModel>> chatLiveData;
+    public ArrayList<ChatLogMessageModel> chatArrayList = new ArrayList<>();
+    private final MainRepository mainRepository = new MainRepository();
 
     public ChatActivityViewModel() {
         chatLiveData = new MutableLiveData<>();
