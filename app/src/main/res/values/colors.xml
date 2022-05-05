@@ -9,6 +9,6 @@
     <color name="hint_text_color">#5F6063</color>
     <color name="primary_text_color">#FFFFFF</color>
     <color name="button_color">#90FFFFFF</color>
-    <color name="disabled_line_color">#7B7B7E</color>
+    <color name="disabled_line_color">#FF7B7B7E</color>
     <color name="bubble_color">#FFEFEFEF</color>
 </resources>

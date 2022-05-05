@@ -1,5 +1,9 @@
 package com.datechnologies.androidtest.views;
 
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.ProgressBar;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 

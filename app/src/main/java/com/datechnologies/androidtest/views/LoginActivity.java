@@ -3,11 +3,13 @@ package com.datechnologies.androidtest.views;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
-
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
@@ -29,6 +31,7 @@ public class LoginActivity extends CommonActivity{
     // Static Class Methods
     //==============================================================================================
     LoginActivityViewModel loginViewModel;
+    private ProgressBar loadingIndicator;
 
 
     public static void start(Context context)
@@ -40,7 +43,6 @@ public class LoginActivity extends CommonActivity{
     //==============================================================================================
     // Lifecycle Methods
     //==============================================================================================
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,37 +75,43 @@ public class LoginActivity extends CommonActivity{
         //called from Common Activity
         setupActionBar();
 
+        loginViewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
         ActivityLoginBinding activityLoginBinding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
         activityLoginBinding.setLifecycleOwner(this);
         activityLoginBinding.setLoginActivityViewModel(loginViewModel);
 
         Button loginButton = activityLoginBinding.idBtnLogin;
+        loadingIndicator = activityLoginBinding.loadingIndicator;
 
-        loginViewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
         loginViewModel.getLoginResult().observe(this, s -> showLoginResponseDialog(s, loginViewModel.isSuccess));
 
         loginButton.setOnClickListener(view -> {
             if(validateLogin(loginViewModel.emailAddress, loginViewModel.password)){
-                loginViewModel.login(loginViewModel.emailAddress, loginViewModel.password);
+                startLoginProcess(loginViewModel.emailAddress, loginViewModel.password);
             }
         });
     }
 
-    private boolean validateLogin(String username, String password){
-        boolean usernameIsNull =  username == null;
-        boolean passwordIsNull = password == null;
-        boolean usernameIsEmpty = username.trim().length() == 0;
-        boolean passwordIsEmpty = username.trim().length() == 0;
+    private void startLoginProcess(String email, String password){
+        loadingIndicator.setVisibility(View.VISIBLE);
+        disableUserInteraction();
+        loginViewModel.login(email, password);
+    }
 
-        if((usernameIsNull || usernameIsEmpty) && (passwordIsNull || passwordIsEmpty)){
+    private boolean validateLogin(String email, String password){
+        boolean emailIsNull =  email == null, passwordIsNull = password == null;
+        boolean emailIsEmpty = (email != null ? email.trim().length() : 1) == 0;
+        boolean passwordIsEmpty = (password != null ? password.trim().length() : 1) == 0;
+
+        if((emailIsNull || emailIsEmpty) && (passwordIsNull || passwordIsEmpty)){
             showErrorToast(LoginError.BOTH);
             return false;
         }
-        if(usernameIsNull || usernameIsEmpty){
+        if(emailIsNull || emailIsEmpty){
             showErrorToast(LoginError.EMAIL);
             return false;
         }
-        if(password == null || password.trim().length() == 0){
+        if(passwordIsNull || passwordIsEmpty){
             showErrorToast(LoginError.PASSWORD);
             return false;
         }
@@ -129,8 +137,18 @@ public class LoginActivity extends CommonActivity{
     }
 
     private void showLoginResponseDialog(String displayText, boolean successfulLogin) {
+        loadingIndicator.setVisibility(View.GONE);
+        enableUserInteraction();
         FragmentManager fm = getSupportFragmentManager();
         LoginResponseDialog loginResponseDialog = LoginResponseDialog.newInstance(displayText, successfulLogin);
         loginResponseDialog.show(fm, "fragment_login");
+    }
+
+    private void disableUserInteraction(){
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
+    private void enableUserInteraction(){
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 }

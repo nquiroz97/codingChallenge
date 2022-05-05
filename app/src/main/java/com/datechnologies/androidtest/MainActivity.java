@@ -3,7 +3,6 @@ package com.datechnologies.androidtest;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-
 import com.datechnologies.androidtest.views.AnimationActivity;
 import com.datechnologies.androidtest.views.ChatActivity;
 import com.datechnologies.androidtest.views.LoginActivity;
@@ -20,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTitle(R.string.activity_main_title);
         setContentView(R.layout.activity_main);
-
 
         //DONE: Make the UI look like it does in the mock-up
         //DONE: Add a ripple effect when the buttons are clicked

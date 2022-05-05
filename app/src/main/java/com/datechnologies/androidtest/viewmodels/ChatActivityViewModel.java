@@ -20,12 +20,9 @@ public class ChatActivityViewModel extends ViewModel {
 
     public ChatActivityViewModel() {
         chatLiveData = new MutableLiveData<>();
-
-        // retrofit call when viewModel is initialized
-        getChats();
     }
 
-    private void getChats(){
+    public void getChats(){
         mainRepository.fetchChatMessages(new MainRepository.OnChatResponse() {
             @Override
             public void onResponse(ChatResponse chatResponse) {
